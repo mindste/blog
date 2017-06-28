@@ -5,6 +5,7 @@
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', 'http://fonts.googleapis.com/css?family=Raleway:400,700' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
@@ -15,7 +16,7 @@
          <%=  image_tag  "logo.png" %>
          <%  end %>
        </div>
-
+       <br />
        <ul>
          <li  class="category">Website</li>
          <li><%=  link_to  "blog",  root_path  %></li>
@@ -29,8 +30,26 @@
          <li><a  href="https://github.com/">Github</a></li>
          <li><a  href="mailto:metaclon@gmail.com">Email</a></li>
        </ul>
+
+       <p class="sign_in">Admin  Login</p>
      </div>
 
-         <%= yield %>
+     <div id="main_content">
+       <div id="header">
+         <p>All  Posts</p>
+
+         <div class="buttons">
+           <button class="button"><%=  link_to  "New  Post", new_post_path  %></button>
+           <button class="button">Log  out</button>
+         </div>
+       </div>
+
+       <%  flash.each  do  |name,msg|  %>
+          <%=  content_tag(:div, msg, class:"alert") %>
+       <%  end  %>
+
+       <%= yield %>
+     </div>
+
   </body>
 </html>
